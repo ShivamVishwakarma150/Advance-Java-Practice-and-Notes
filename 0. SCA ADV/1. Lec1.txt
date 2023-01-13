@@ -1,0 +1,145 @@
+Types of Drivers
+----------------
+
+JDBC Offers 4 kinds of Drivers.
+
+1. JDBC ODBC Bridge Driver
+2. Partly Java Driver
+3. Network Driver
+4. Thin Driver , Pure Java Driver , Native Protocol
+Driver 
+
+Drivers (In the context of java) wo s/w hote hai jo apke java application ko backend se connect karte hain.
+
+
+
+
+1. JDBC ODBC Driver
+===================
+
+
+Advantage:-
+----------
+a) Comes preinstalled with JDK
+b) A Common Driver is used for every database
+
+Disadvantage:-
+--------------
+a) It makes our code platform dependent (MS)
+b) ODBC Bridge -> Windows ke andar ek tool hai jisase ham database se connect ho skte hain.
+c) No Support for Modern Data Types ie. BLOB,CLOB.
+
+
+2. Partly Java Driver
+=====================
+
+A Driver which made by some of its  code is written in java and another half code is written in another programming language like c and C++ for database connectivity.Although it is faster than type 1 Driver but still it is slow in speed because the DB Part is still Written in Other Language.
+
+
+Java App -> JDBC -> DriverManager -> Type2 Driver -> Native Libraries -> database
+
+Thus professionally this driver is also not used.
+
+
+3. Type 3 Network Driver
+========================
+
+It is purely Coded in java
+
+Java APp -> Middleware Server(Type 3) -> DB 
+
+
+Isme Problem ye hai ki agar mai locally v database ko access karuga to us condition me v hame server as a Middleware use karna pdega ye mandatory hai .
+
+As the Name indicates this driver is supported/installed on a Middleware server and via that server all communication  takes place. Thus even for a local DB unnecessary the server will be involved.
+
+This driver is also not very popular commercially.
+
+
+4. Type 4 Driver
+================
+
+a) Are Coded by database Vendors (Companies Which Create DB). so these driver can communicate with target database in the most efficient manner.
+
+b) Purely Designed in Java.
+c) They Support all the major data types available in databases. Like BLOB,CLOB, RAW etc along with varchar2, number, date etc.
+
+BLOB -> For storing audio,video,image kind of data (Binary Large Object)
+CLOB -> Character Large Object It Supported data upto 4GB.
+
+
+What is the ONLY problem with type4 drivers ?
+---------------------------------------------
+The only problem with these drivers is that they are not bunddled with JDK, Rather since they are created by different-different Companies, so we have to download them ans set them in CLASSPATH.
+
+
+some companies have made these drivers paid drivers , so in order to use them in our projects we have to pay license fee to our company.
+
+
+
+
+STEPS NEEDED FOR CONNECTING OUR JAVA APP TO ANY RDBMS USING JDBC
+-------------------------------------------------------
+
+Overall we require 7 steps for connecting and using databases in our java app.
+These 7 steps are :-
+
+1. Import required packages i.e. java.sql and javax.sql 
+2. Load and Register the driver (This step After JDBC 4 onwards is not necessary  but it is compulsory till JDBC 3 ie till Java 5 ).
+
+3. Opening the connection to the database.
+
+4. Create a Statement object which will be used to send the query to the DB.
+
+5. Execute the SQL query.
+
+6. fetch and process the result.
+
+7. Closing the connection to the database.
+
+
+
+
+What is the difference between java.sql and javax.sql ?
+----------------------------------------------------
+Ans :- The package java.sql is available from JDBC 1.0 that is from first version of java.
+This package is based upon connected architecture.
+It means that throughout the execution of program , our code maintains an open connection to the database in other words even if our code is doing nothing still the connection remains open. 
+This kind of architecture is good if our DB is locally installed.
+
+But for shared databases this is not good because in connected architecture the database server delightedly becomes busy serving one application only while other apps might have to wait. so to overcome this JDBC 4.0 came up with the idea of DISCONNECTED ARCHITECTURE. 
+
+In this architecture our app connects with the database momentarily ( for a very short duration ), retrieve data and gets disconnected.
+the benefit will be that DB servers will be able to handle multiple application together. All the classed and the interfaces for DISCONNECTED ARCH come from the package javax.sql.
+here x means extended means improvisation of previous technology.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
