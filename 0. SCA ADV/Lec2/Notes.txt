@@ -1,0 +1,128 @@
+Step2:-
+-------
+2. Load and Register the driver (This step After JDBC 4 onwards is not necessary  but it is compulsory till JDBC 3 ie till Java 5 ).
+
+This step means that we (programmer) have to inform jvm about the driver class which we want to use for connecting with the DB. as we know there are multiple databases and each database has multiple option for driver. SO we must tell the JVM that which driver we want to use in our JDBC APP.
+
+
+
+
+class Emp
+{
+
+
+
+}
+
+Qn1 : How are you going to create object of this class ?
+ANs : By using the keyword new.
+
+
+
+Qn2 : - Apart from creating the object what "new" does ?
+Ans :- If the object being created is the first object then new executes the static block placed inside class. Then new calls the constructor. 
+
+class Emp{
+
+    public Emp()
+    {
+        sopln("Constructor called....");
+    }
+    static
+    {
+        sopln("Static block called");
+    }
+
+}
+
+
+Emp e1 = new Emp();
+Emp e2 = new Emp();
+
+OP:- 
+Static block called
+Constructor called...
+Constructor called...
+
+
+
+
+Qn3:- Can we do something so that CONSTRUCTOR DOESN'T EXECUTE BUT ONLY STATIC BLOCK EXECUTES ?
+Ans:- Yes we can do that But for this we will have to apply a concept called DYNAMIC CLASS LOADING which is done using a special method in Java called as forName().
+
+In Java we have a method called forName(), which belongs to a class called Class.This method is static by nature and so it can be called by just using its class name called Class. The method has following prototype :
+
+public static Class forName (String <class name>) throws ClassNotFoundException
+
+
+
+class Emp{
+
+    public Emp()
+    {
+        sopln("Constructor called....");
+    }
+    static
+    {
+        sopln("Static block called");
+    }
+
+}
+
+class Test{
+    public static void Main(String[] args){
+        try{
+            Class.forName("Emp");
+            Class.forName("Emp"); // Static block still execute only one time 😁
+        }
+        catch(ClassNotFoundException ex)
+        {
+            SOP("Sorry ! Class cannot be loaded!");
+        }
+    }
+}
+
+
+OUTPUT:
+static block called...
+
+
+Driver Provided by Oracle 
+===========================
+
+// this is predefined code all this is pre-coded.
+class OracleDriver
+{
+
+static
+{
+    // This piece of code registers the driver and it is always present in every type4 driver.
+    DriverManager.registerDriver(new OracleDriver());
+}
+
+}
+
+class Test{
+    public static void main(String []args){
+        try
+        {
+             Class.forName("oracle.jdbc.OracleDriver");
+        }
+        catch(ClassNotFoundException ex){
+            SOP("Driver not loaded");
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
