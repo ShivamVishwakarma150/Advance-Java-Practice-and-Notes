@@ -1,0 +1,73 @@
+How Do We open connection to the database ?
+-------------------------------------------
+
+If you want to connect / open the connection to the database , then Java has a method called getConnection().
+
+This method belongs to the class DriverManager which  is available in the package java.sql.
+
+The prototype of this method is :
+
+1. public static Connection getConnection(String connUrl , String username, String pwd) throws SQLException  
+2. public static Connection getConnection(String connurl);
+
+
+Following is the desc of it's arg:
+
+1. connUrl : Represents the details of the DB with which we want to connect
+2. username : Represents database username 
+3. pwd: Represents database password
+
+The return type of method getConnection() is Connection which is an interface available in the package of java.sql.
+Now as we know interfaces cannot be instantiated, thus the method getConnection() actually returns the object of an implementation class(child class)  of Connection interface.
+
+
+for Oracle
+==========
+
+try{
+Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@//Shivam-PC:1521/xe","system","Shivam12345");
+}
+
+Here 
+
+jdbc -> Main Protocol, This will always remains same irrespective of the DB.
+oracle -> Sub Protocol
+thin -> driver type (required only for oracle)
+Sachin-PC -> Server Name (PC Name)
+1521 -> Port Number 
+system -> username 
+SHivam12345 -> password
+
+for mysql
+=========
+
+try{
+Connection conn = DriverManager.getConnection("jdbc:mysql:@//Shivam-PC:1521/xe","root","root");
+}
+
+Connection in java is an interface. and getConnection returns child class of Connection interface. and these child class is separate for each database. in whole advance java 75% of things are interface. so we can say that here it uses concept of polymorphism. 
+
+
+
+
+STEP 4 :- Creating Statement Object
+====================================
+
+For creating Statement object we have to call a method called createStatement() which belongs to the Connection object.
+
+The prototype of this method is :
+
+public Statement createStatement() throw SQLException
+
+This methods creates and returns a Statement object using which we can execute SQL queries. Actually Statement is also an interface so what we get is the object of it's implementation class.
+
+
+try{
+    Connection conn = DriverManager.getConnection("...","...","...");
+    Statement st=conn.createStatement();
+}
+catch(SQLException ex)
+{
+    
+}
+
