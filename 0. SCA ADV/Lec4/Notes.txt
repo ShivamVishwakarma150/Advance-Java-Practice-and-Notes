@@ -1,0 +1,124 @@
+TYPES OF QUERIES (JDBC Point of view)
+----------------
+1) DDL -> To Execute DDL COmmand we have a method called executeUpdate()
+    a) Create Table
+    b) Alter Table
+    c) Truncate Table
+    d) Drop Table 
+
+    DML
+    a) Insert
+    b) Delete
+    c) Update
+
+
+2) DML -> To Execute DML Commands (only SELECT) we have a method called executeQuery()
+    d) Select
+
+
+
+
+Step -> 5 Executing the Queries 
+--------------------------------
+
+In JDBC to execute SQL queries we have 2 methods . These methods are executeUpdate() and executeQuery().
+
+Both these methods belong to the Statement object and have the following prototype.
+
+1. public int executeUpdate(String SQL Command) throws SQLException
+
+2. public ResultSet executeQuery(String SQLquery) throws SQLException
+
+ResultSet contains set of rows. which is only returned by select statement.
+
+we pass Create Table,Truncate Table, Alter Table,Drop Table,Insert,Update and Delete commands as arg to the method executeUpdate().
+
+we pass ONLY SELECT COMMAND as argument to the method executeQuery().
+
+
+
+
+
+
+The method executeQuery() accepts an SQL SELECT statement as arg, runs it on the Table and returns us a collection of all the rows effected/fetched by the query. These set of rows are returned as an object of type ResultSet, which is an interface. 
+
+
+For Ex:
+
+ResultSet rs=st.executeQuery("select eName, sal from emp");
+
+
+
+Step -> 6 Fetch Data and process it
+-----------------------------------
+
+To fetch the data returned by SQL commands we use methods of ResultSet object.
+
+These are 2 methods:
+
+1. public boolean next() throws SQLException
+2. public XXX getXXX(int col_pos) throws SQLException
+
+
+The first method moves the record pointer(cursor) from Before first row to the next row(s) in the ResultSet.
+If it finds a row at the next position then it returns true otherwise when it reaches after last row it returns false.
+
+The second method allows us to resd/fetch the data from ResultSet object. It has the different versions one each for every data type. For ex, to read a String, we call the method getString(), to read an in value we call the method getInt() and son on.
+
+Thus exact prototype of these method is:
+
+public String getString(int col_pos) throws SQLException
+public int getInt(int col_pos) throws SQLException
+
+also they are overloaded and have another version , which accepts col name as arg.
+
+public String getString(String col) throws SQLException
+public int getInt(String col_pos) throws SQLException
+
+
+
+cursor in ResultSet is start from BFR (Before First Row ) ----> and go till ALR (After Last Row).
+
+
+while(rs.next())
+{
+    String name=rs.getString(1);
+    int income = rs.getInt(2);
+    SOP(name+","+income);
+
+}
+
+OR 
+
+while(rs.next())
+{
+    String name=rs.getString("eName");
+    int income = rs.getInt("sal");
+    SOP(name+","+income);
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
