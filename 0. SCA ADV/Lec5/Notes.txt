@@ -1,0 +1,73 @@
+TODAYS's AGENDA
+----------------
+
+
+1. Creating a new user in Oracle
+
+    SQL>create user advjavabatch identified by myscholars;
+
+    SQL> grant resource,connect to advjavabatch;
+
+        Grant succeeded.
+
+    SQL> conn
+    Enter user-name: advjavabatch
+    Enter password:
+    Connected.    
+
+    SQL> select * from tab; -> to show all the tables present in the user.
+        no rows selected
+
+    SQL> create table allbooks(bookid number(3),bookname varchar2(15), subject varchar2(15), bookprice number(6,2));
+
+        Table created.
+
+    To insert records in the table we use the INSERT command:
+
+    Syntax:
+          Insert into <table_name> values (<list_of_values>);
+            Note :- Values must be comma separated & values shall be same as no of cols.
+
+            2:- Order of values must be same as order of columns in the table & the values of varchar2 type must be enclosed in single quotes ''.
+
+
+    SQL> insert into allbooks values(101,'Let Us C','C',400);
+        1 row created.
+
+    SQL> select * from allbooks;
+
+    BOOKID BOOKNAME        SUBJECT          BOOKPRICE
+---------- --------------- --------------- ----------
+       101 Let Us C        C                      400
+       102 Mastering Java  JSE                    600
+       103 Learning C++    C++                    500
+       104 Java Gems       JSE                    560
+       105 Python Projects Python                 660
+       106 Java Practicals  JSE                    460
+
+    6 rows selected.
+
+    SQL> commit; // Very important otherwise we will not get these rows in java.
+
+        Commit complete.
+
+    
+
+
+2. Activating the user 
+
+3. Logging into the user
+
+4. Creating the table 
+
+5. Insert Rows 
+
+6. JDBC app to fetch the data from the table 
+
+
+Go to the following file available in Oracle's installation folder and check three things:
+
+1. Host Name: Computer's Name
+2. Port No: 99% ----> 1521
+3. Service name: 99%----->xe (for express ed), orcl--->(for enterprise)
+C:\oraclexe\app\oracle\product\11.2.0\server\network\ADMIN
