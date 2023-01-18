@@ -75,7 +75,34 @@ public int executeUpdate() throws SQLException
 
 
 
+WAP to accept a subject name from the user and an amount.
+Now increment the current price of every book of that subject by adding the given amount.
+finally also display how many books were updated.
+
+Syntax for Update:
+
+Update <table_name>
+set <col_name>=<value>
+where <test_condition>;
+
+For ex:
+
+Update Students 
+set per=75
+where rollno>12;
+
+
+For our question the query will be:
+
+Update allbooks set bookprice=bookprice+? where subject=?
 
 
 
+HW 
+--
 
+
+1. WAP to insert multiple records into the table i.e. after inserting a record ask the user if he wants to continue. If the answer if yes then insert another rec otherwise stop. finally display how many records have been inserted in the table.
+
+
+2. WAP to accept an amount from the user and remove all the books from the table whose price is less that the given amount.

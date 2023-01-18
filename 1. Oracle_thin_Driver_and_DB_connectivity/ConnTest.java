@@ -5,11 +5,11 @@ public class ConnTest {
 
         // 1. Register JDBC driver s/w
 
-        // a. create JDBC Driver class object
-        oracle.jdbc.driver.OracleDriver obj = new oracle.jdbc.driver.OracleDriver();
+        // // a. create JDBC Driver class object
+        // oracle.jdbc.driver.OracleDriver obj = new oracle.jdbc.driver.OracleDriver();
 
-        // register JDBC driver class object with DriverManager service
-        DriverManager.registerDriver(obj);
+        // // register JDBC driver class object with DriverManager service
+        // DriverManager.registerDriver(obj);
 
         //2. Establish the connection
         Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","Shivam@12345");
