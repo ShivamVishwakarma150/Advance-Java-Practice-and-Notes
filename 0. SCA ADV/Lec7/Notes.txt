@@ -1,0 +1,81 @@
+DYNAMIC SQL :- Queries jisme data ham runtime par bhej ske
+
+Two ways of Writing Dynamic SQL:
+
+1. Using String Concatenation
+
+2. Using PreparedStatement Interface
+
+Drawback Of String Concat:
+
+1. Very Difficult to write because of different type of quotes
+2. Date in Oracle DD-MON-YY ie 18-JAN-23
+In this conversion must also handle by user.
+It becomes programmers responsibility to set the date in exactly same formate as the DB wants it before sending the query.
+3. It is very prone (easy target) to a famous or security attack called SQL Injection.
+
+Qn:- What is PreparedStatement?
+Ans :- It is an interface which itself extends Statement.
+
+Qn:- What are features of PreparedStatement interface ?
+Ans:- This interface helps a programmer to execute dynamic queries without bothering about quotes as well as date formatting.
+
+Qn:- How do we use PreparedStatement interface ?
+Ans:- There are 3 steps:
+    To Use PreparedStatement interface we have 3 step:
+
+    a. Getting object of PreparedStatement interface.
+    b. Replacing placeholder with actual data
+    c. Executing the query
+
+To get the object of PreparedStatement interface we have to call a method called prepareStatement(), which belongs to the Connection object and has the following prototype:
+
+            RT                  Name
+public PreparedStatement prepareStatement(String sql) throws SQLException
+
+The SQL query passed as arg to this method is a query (SELECT or NON-SELECT) with placeholders.
+
+The term placeholder is used to indicate Java that in it's place we will substitute the actual value of a variable before executing the query or sending the query to the database These placeholders are represented using QUESTION MARK.
+
+
+STEP 1 :- Getting object of PreparedStatement interface.
+PreparedStatement ps = con.prepareStatement("insert into allbooks values(?,?,?,?)");
+
+
+
+
+
+STEP 2 :- Replacing placeholder with actual data
+To do this we have setter methods in PreparedStatement. These setter methods have the following general prototype:
+
+1. public void setXXX(int pos_of_placeholder, XXX value) throws SQLException;
+XXX -> Replaced with actual data type.
+
+for ex, to set a String value the method will be:
+
+public void setString(int pos_of_placeholder, String value) throws SQLException;
+
+for ex, to set a int value the method will be:
+
+public void setInt(int pos_of_placeholder, int value) throws SQLException;
+
+ps.setString(1,bid); here bid --> variable 
+
+
+
+STEP 3 :- Execute the query 
+----------------------------
+
+To execute the query we have same 2 methods in PreparedStatement which are also present in Statement interface. the Only diff is that these , methods are non-parameterized i.e they don't accept any query as arg. This is because we already have set the query at the time of creation of the PreparedStatement object.
+
+following are Their prototypes:
+
+public ResultSet executeQuery() throws SQLException
+public int executeUpdate() throws SQLException
+
+
+
+
+
+
+
