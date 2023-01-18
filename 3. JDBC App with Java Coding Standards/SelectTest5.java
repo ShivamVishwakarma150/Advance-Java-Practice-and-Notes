@@ -1,4 +1,4 @@
-package com.shivam.jdbc;
+// package com.shivam.jdbc;
 // Write a JDBC App to get count of records from Student Db Table
 import java.sql.Connection;
 import java.sql.DriverManager;

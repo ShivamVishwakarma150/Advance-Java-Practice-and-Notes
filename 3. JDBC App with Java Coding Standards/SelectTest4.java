@@ -2,7 +2,7 @@
 
 // Write a JDBC APP that gives Department form DEPT table Based on given deptno
 
-package com.shivam.jdbc;
+// package com.shivam.jdbc;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

@@ -1,4 +1,4 @@
-package com.shivam.jdbc;
+// package com.shivam.jdbc;
 
 // Write JDBC App who gives MAX sal from EMployee.
 import java.sql.Connection;
