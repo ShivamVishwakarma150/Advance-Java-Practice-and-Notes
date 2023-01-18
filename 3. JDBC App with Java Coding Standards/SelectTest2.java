@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class SelectTest2 {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException {
        // read input from enduser
        Scanner sc=null;
        String desg1=null,desg2=null,desg3=null;
@@ -46,6 +46,8 @@ public class SelectTest2 {
 
         
 
-       } 
+       } finally{
+        
+       }
     }
 }
