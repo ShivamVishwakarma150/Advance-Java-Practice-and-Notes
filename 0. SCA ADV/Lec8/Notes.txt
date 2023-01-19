@@ -1,0 +1,12 @@
+Exercise 
+--------
+
+Write a JDBC app, which does the following:
+
+1. Accepts record for inserting new row in Employees Table from the user.
+
+2. Inserts the row in the employees table 
+
+3. Also updates the corresponding total_sal in DEPARTMENTS table by adding sal of the employees whose rec is being inserted in the EMPLOYEES table.
+
+Do this for multiple employees.
