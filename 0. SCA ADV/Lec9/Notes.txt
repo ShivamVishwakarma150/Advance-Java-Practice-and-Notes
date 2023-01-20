@@ -42,7 +42,7 @@ ResultSet.CONCUR_READ_ONLY :
       Creates a read-only result set. This is the default
 
 ResultSet.CONCUR_UPDATABLE :
-     Creates an updateable result set.
+     Creates an updatable result set.
 
 
 All our examples written so far can be written as   

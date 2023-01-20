@@ -13,7 +13,9 @@ class MyJdbcApp8{
             System.out.println("Connection successfully opened!");
 
             // Read-Only and Forward-only (Non-Parameterized)
-            Statement st=con.createStatement();
+            // This line gives us Bidirectional, with read only features and insensitive to changes made by others.  
+            Statement st=con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
+
 
             ResultSet rs= st.executeQuery("select bookname,bookprice from allbooks");
 
