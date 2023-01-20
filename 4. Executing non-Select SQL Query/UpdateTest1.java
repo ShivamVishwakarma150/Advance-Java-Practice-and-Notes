@@ -1,5 +1,7 @@
 // package com.shivam.jdbc;
 
+// Make A jdbc application where update salary by (user given) percentage
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
