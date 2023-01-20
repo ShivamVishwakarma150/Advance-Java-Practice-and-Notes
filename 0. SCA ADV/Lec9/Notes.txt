@@ -1,0 +1,138 @@
+Creating scrollable and updateable ResultSet .
+
+ResultSet concurrency.
+
+Insert update delete in Resultset
+
+
+=============================================================
+
+
+By default the Resultset which we create in java are ResultSet’s which can only move in forward direction 
+
+And they also don’t allow any kind of changes made into them.
+
+In order to change this behaviour we need to handle its TYPE (scrollability) & CONCURRENCY(updatability).
+
+To set scrollability and updatability of the ResultSet we need to call the method createStatement( ) of the Connection object which has the following prototype:
+
+public Statement createStatement(int scrollability,int 
+updatability) throws SQLException
+
+
+
+ResultSet.TYPE_FORWARD_ONLY:
+    The cursor can only move forward in the result set.
+    i.e from before 1st row upto after the last row and it  is also 
+    the default type of ResultSet.
+
+ResultSet.TYPE_SCROLL_INSENSITIVE:
+    The cursor can scroll forward and backward, and the ResultSet is not sensitive to the changes made by other users  to the database after the result set was created. It can also move to an absolute position.
+
+ResultSet.TYPE_SCROLL_SENSITIVE:
+     The cursor can scroll forward and backward, as well as to an absolute position  and the result set is sensitive to changes made by other users after the result set was created.
+
+
+RESULTSET CONCURRENCY
+-----------------------
+
+The possible ResultSet Concurrency are given below. If you do not specify any Concurrency type, you will automatically get one that is CONCUR_READ_ONLY.
+
+ResultSet.CONCUR_READ_ONLY :
+      Creates a read-only result set. This is the default
+
+ResultSet.CONCUR_UPDATABLE :
+     Creates an updateable result set.
+
+
+All our examples written so far can be written as   
+     follows, which initializes a Statement object to create   
+      a forward-only, read only ResultSet object
+
+
+Statement stmt;
+stmt=conn.createStatement(ResultSet.TYPE_FORWARD_ON
+LY, ResultSet.CONCUR_READ_ONLY);
+
+
+IMPORTANT RESULTSET METHODS
+------------------------------
+
+public void beforeFirst( ) throws SQLException Moves the cursor just before the first row.
+
+public void afterLast() throws SQLException Moves the cursor just after the last row.
+
+public boolean first() throws SQLException Moves the cursor to the first row.
+
+public boolean last() throws SQLException Moves the cursor to the last row.
+
+public boolean absolute(int row) throws SQLException Moves the cursor to the specified row.
+
+public boolean relative(int row) throws SQLException Moves the cursor the given number of rows forward or backward, from where it is currently pointing.
+
+public boolean previous() throws SQLExceptionMoves the cursor to the previous row. 
+
+public int getRow() throws SQLException Returns the row number that the cursor is pointing to.
+
+
+
+UPDATING THE RESULTSET
+======================
+
+
+It is a 3 step process
+1. Place the record pointer at the desired location
+2. We have to call the required updateXXX() method
+       - these methods are used  for changing the values in     
+          the column
+       prototype
+         public void updateXXX(int,XXX) throws   
+          SQLException 
+          int column position in ResultSet.
+          xxx new value we want to provide.
+
+
+For ex:
+    - the updateInt( ) method has:
+       public void updateInt(int,int)throws SQLException
+   - the updateString( ) method has:
+        public void updateString (int,string)throws  
+        SQLException
+These update method also have an overloaded version where 1st argument is string specifying column name-
+
+
+      public void updateInt (String , int)
+      public void updateString (String , String)
+
+3. After updation has been done we have to call the updateRow( ) method which finally transfers the changes to the database.
+
+
+SAMPLE CODE
+-----------
+
+Statement st=conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_UPDATABLE);
+
+ResultSet rs=st.executeQuery("Select bookname,bookprice from allbooks ");
+
+while(rs.next())
+{
+double amt=rs.getDouble(2);
+rs.updateInt(2,amt+amt*.01);
+rs.updateRow();
+System.out.println(rs.getString(1)+”\t”+rs.getDouble(2));
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
