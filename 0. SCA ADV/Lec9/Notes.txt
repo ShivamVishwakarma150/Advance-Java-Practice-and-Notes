@@ -104,7 +104,7 @@ These update method also have an overloaded version where 1st argument is string
       public void updateInt (String , int)
       public void updateString (String , String)
 
-3. After updation has been done we have to call the updateRow( ) method which finally transfers the changes to the database.
+3. After updation has been done we have to call the updateRow() method which finally transfers the changes to the database.
 
 
 SAMPLE CODE

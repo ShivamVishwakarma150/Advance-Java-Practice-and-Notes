@@ -1,0 +1,26 @@
+EXERCISE
+--------
+
+Imagine you have a table called “ALLBOOKS” , with 4 columns 
+as “bookid”,”bookname”,”subject” and “bookprice”. The 
+table has some records already present in it.
+
+Write an application which updates the price of each JEE book 
+in the ALLBOOKS  table by 10%.
+
+At the end also display how many books were updated      
+
+
+INSERTING  RECORD IN THE RESULTSET
+------------------------------------
+
+
+Insertion of  a row require four steps:
+
+We have to call a method called moveToInsertRow() of ResultSet , it moves the cursor to a special position called “insert row position”.
+
+Add values to a specific column by calling updateXXX() method.
+
+Call the method insertRow() of ResultSet ,so that the changes made are transferred to underlying database.
+
+Call moveToCurrentRow() of ResultSet , so that the cursor moves back to the position where it was before calling moveToInsertRow().
