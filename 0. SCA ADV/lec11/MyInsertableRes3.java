@@ -1,6 +1,6 @@
 import java.sql.*;
-import java.util.ArrayList;
-public class MyScrollableRes1{
+import java.util.*;
+public class MyInsertableRes3{
     public static void main(String[] args) {
         Connection con = null;
         try{
@@ -15,31 +15,30 @@ public class MyScrollableRes1{
             Statement st=con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_UPDATABLE);
 
 
-            ResultSet rs= st.executeQuery("select subject,bookprice,bookname from allbooks");
+            ResultSet rs= st.executeQuery("select a.* from allbooks a");
             
-            ArrayList<String> bookList=new ArrayList<>();
-            while(rs.next()){
-                String subject = rs.getString(1);
-                if(subject.equalsIgnoreCase("JSE"))
-                {
-                    double amt=rs.getDouble(2);
-                    amt=amt+amt*0.1;
-                    rs.updateDouble(2, amt);
-                    rs.updateRow();
-                    String bname=rs.getString(3);
-                    bookList.add(bname);
+            Scanner sc=new Scanner(System.in);
+            System.out.println("Enter bookid: ");
+            int bookid=sc.nextInt();
+            System.out.println("Enter bookname:");
+            sc.nextLine();
+            String bname=sc.nextLine();
+            System.out.println("Enter subject:");
+            String subject=sc.nextLine();
+            System.out.println("Enter bookprice:");
+            double amt = sc.nextDouble();
 
-                }
-            }
+            rs.moveToInsertRow();
+            rs.updateInt(1,bookid);
+            rs.updateString(2,bname);
+            rs.updateString(3,subject);
+            rs.updateDouble(4,amt);
+            rs.insertRow();
+            rs.moveToCurrentRow();
+            System.out.println("Record Inserted");
 
-            if(bookList.size()==0)System.out.println("No Books of JSE Found :(");
-            else {
-                System.out.println(bookList.size()+" Books Updated");
-                System.out.println("Book Names are:");
-                for(String str:bookList){
-                    System.out.println(str);
-                }
-            }
+
+            sc.close();
             
 
         }catch(ClassNotFoundException cnf){
