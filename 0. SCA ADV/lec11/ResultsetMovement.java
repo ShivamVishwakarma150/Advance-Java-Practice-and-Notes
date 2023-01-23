@@ -1,6 +1,5 @@
 import java.sql.*;
-import java.util.*;
-public class MyInsertableRes3{
+public class ResultsetMovement{
     public static void main(String[] args) {
         Connection con = null;
         try{
@@ -15,32 +14,13 @@ public class MyInsertableRes3{
             Statement st=con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_UPDATABLE);
 
 
-            ResultSet rs= st.executeQuery("select a.* from allbooks a");
-            
-            Scanner sc=new Scanner(System.in);
-            System.out.println("Enter bookid: ");
-            int bookid=sc.nextInt();
-            System.out.println("Enter bookname:");
-            sc.nextLine();
-            String bname=sc.nextLine();
-            System.out.println("Enter subject:");
-            String subject=sc.nextLine();
-            System.out.println("Enter bookprice:");
-            double amt = sc.nextDouble();
+            ResultSet rs= st.executeQuery("select * from allbooks");
 
-            // ye result set me ek new row insert karta hai
-            rs.moveToInsertRow();
-            rs.updateInt(1,bookid);
-            rs.updateString(2,bname);
-            rs.updateString(3,subject);
-            rs.updateDouble(4,amt);
-            rs.insertRow();
-            rs.moveToCurrentRow();
-            System.out.println("Record Inserted");
+            rs.absolute(7); 
+            String bname=rs.getString("bookname");
+            System.out.println(bname);
 
 
-            sc.close();
-            
 
         }catch(ClassNotFoundException cnf){
             System.out.println("Sorry Cannot Load the driver");

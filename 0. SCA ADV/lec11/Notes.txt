@@ -1,0 +1,11 @@
+DELETE ROW
+----------
+
+To delete any row from ‘resultset’ we just have to move the cursor to the desired position and then , we can call the method deleteRow() of resultSet. 
+
+Example :
+    rs.next(); // Will move the record pointer to the next row 
+
+	rs.deleteRow();
+
+

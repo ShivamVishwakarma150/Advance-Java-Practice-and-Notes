@@ -1,6 +1,8 @@
+
+
 import java.sql.*;
-import java.util.*;
-public class MyInsertableRes3{
+import java.util.Scanner;
+public class MyDeletableRes{
     public static void main(String[] args) {
         Connection con = null;
         try{
@@ -15,31 +17,26 @@ public class MyInsertableRes3{
             Statement st=con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_UPDATABLE);
 
 
-            ResultSet rs= st.executeQuery("select a.* from allbooks a");
+            ResultSet rs= st.executeQuery("select bookid,bookname from allbooks");
             
+            int count=0;
             Scanner sc=new Scanner(System.in);
-            System.out.println("Enter bookid: ");
-            int bookid=sc.nextInt();
-            System.out.println("Enter bookname:");
-            sc.nextLine();
-            String bname=sc.nextLine();
-            System.out.println("Enter subject:");
-            String subject=sc.nextLine();
-            System.out.println("Enter bookprice:");
-            double amt = sc.nextDouble();
-
-            // ye result set me ek new row insert karta hai
-            rs.moveToInsertRow();
-            rs.updateInt(1,bookid);
-            rs.updateString(2,bname);
-            rs.updateString(3,subject);
-            rs.updateDouble(4,amt);
-            rs.insertRow();
-            rs.moveToCurrentRow();
-            System.out.println("Record Inserted");
-
+            while(rs.next()){
+                int bookid=rs.getInt(1);
+                String bname=rs.getString(2);
+                System.out.println(bookid+","+bname);
+                String choice=sc.next();
+                if(choice.equalsIgnoreCase("yes")){
+                    rs.deleteRow();
+                    ++count;
+                }
+            }
+            if(count==0) System.out.println("No books were deleted");
+            else 
+            System.out.println(count+" books deleted");
 
             sc.close();
+            
             
 
         }catch(ClassNotFoundException cnf){
