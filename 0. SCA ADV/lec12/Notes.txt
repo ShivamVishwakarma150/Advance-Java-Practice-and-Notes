@@ -1,0 +1,125 @@
+Today’s Agenda
+---------------
+How to retrieve date from database ?
+How to store date in the database ?
+How to insert images in the database ?
+How to retrieve images from the database ?
+
+---------------------------------------------------
+
+RETRIEVING  DATES
+-------------------
+
+To retrieve dates from the database we need to call the method getDate() of the ResultSet object.
+
+The prototype of the method is :
+
+	public Date getDate( int) throws SQLException
+OR
+public Date getDate( String) throws SQLException
+The return type of the method is an object of java.sql.Date class
+
+EXAMPLE
+-------
+
+ResultSet rs=st.executeQuery(“Select ename,hiredate from 
+emp”);
+
+while(rs.next())
+{
+String name=rs.geString(1);
+Date dt=rs.getDate(2);
+System.out.println(name+”\t”+dt);
+}
+
+
+RETRIEVING  DATES
+-----------------
+
+As we can observe the date we are getting from the database is being displayed in the form yyyy-mm-dd which is not so readable.
+
+
+Thus to make it user friendly or customize the date pattern displayed we need to use the class SimpleDateFormat  available in the package java.text.
+
+
+The SimpleDateFormat class
+---------------------------
+Available in the package java.text
+
+Used to format date and time.
+
+Has the following constructor:
+	public SimpleDateFormat(String pattern)
+   
+This constructor accepts a pattern of format like 
+“dd/MM/yyyy” or “MM-dd-yyyy” etc which indicates the pattern in which we want to convert a date
+
+The format( ) Method
+--------------------
+
+The format( ) method belongs to SimpleDateFormat class and has the following prototype:
+
+	public String format(Object) 
+	
+
+These methods accept a java.sql.Date or java.util.Date object as 
+argument and return us a String containing the date in prescribed 
+format 
+
+
+
+
+
+WAP to print current date as Month-date-year
+----------------------------------------------
+import   java.util.Date;
+import   java.text.SimpleDateFormat;  
+class SimpleDateDemo 
+{
+public static void main(String args[]) 
+{
+       Date today = new Date();
+       SimpleDateFormat sdf;
+      sdf=new SimpleDateFormat("MMMM-dd-yyyy"); 
+      String dtstr=sdf.format(today);
+      System.out.println("Current Date is :"+dtstr);
+}
+}
+Output:
+Current Date is : February-27-2020
+
+
+RETRIEVING  DATES
+------------------
+
+In our JDBC code we just need to make following changes:
+
+Create a SimpleDateFormat object with the 	
+       desired pattern
+
+Retrieve the date from the ResultSet by calling the method getDate( )
+
+Pass the date object to the method format( ) of SimpleDateFormat class which will return the date in the previously set pattern
+
+
+IMPROVED  EXAMPLE
+-----------------
+
+ResultSet rs=st.executeQuery("Select ename,hiredate from emp");
+
+SimpleDateFormat sdf=new SimpleDateFormat("dd-MM-yyyy");
+
+while(rs.next())
+{
+String name=rs.getString(1);
+Date dt=rs.getDate(2);
+String datestr=sdf.format(dt);
+System.out.println(name+"\t"+datestr);
+}
+
+
+
+
+
+
+
