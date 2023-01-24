@@ -1,4 +1,4 @@
-package com.shivam.jdbc1;
+// package com.shivam.jdbc1;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
