@@ -39,7 +39,7 @@ public class OracleToMySQLDataTransferTest2 {
 			if(rs!=null && ps!=null) {
 				while(rs.next()) {
 					// gather each record from RS
-					int no=rs.getInt(1);
+					// int no=rs.getInt(1);
 					String name=rs.getString(2);
 					String addrs=rs.getString(3);
 					float avg=rs.getFloat(4);
