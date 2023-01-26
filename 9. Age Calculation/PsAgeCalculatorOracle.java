@@ -10,6 +10,7 @@ import java.util.Scanner;
 public class PsAgeCalculatorOracle {
 	
 	private static final String AGE_CALCULATOR="SELECT ROUND((SYSDATE-DOB)/365.25,2) FROM PERSON_INFO_DATES WHERE PID=?";
+
 	public static void main(String[] args) {
 		// read inputs
 		Scanner sc=null;
@@ -24,11 +25,12 @@ public class PsAgeCalculatorOracle {
 				System.out.println("Enter Person ID::");
 				pid=sc.nextInt();
 			}
-			// LOad JDBC Driver class
-//			Class.forName("oracle.jdbc.driver.OracleDriver");
+			// Load JDBC Driver class
+			// Class.forName("oracle.jdbc.driver.OracleDriver");
 			
 			// Establish the connection 
 			con=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","Shivam12345");
+
 			// create JDBC PreparedStatement obj having pre-compiled sql Query
 			if(con!=null)
 				ps=con.prepareStatement(AGE_CALCULATOR);
