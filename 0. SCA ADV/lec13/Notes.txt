@@ -1,0 +1,34 @@
+INSERTING  IMAGE
+================
+
+To insert image in the database we need to take the following steps:
+
+1. Create a table in the database with a column having BLOB  data type
+
+2. Create a File object passing it the image to be inserted as argument
+
+3. Create a FileInputStream object using the File object
+
+4. Both the objects are required because while inserting the image we require an InputStream object representing the image and also size of the image which is  given by File object
+
+5. Call the method setBinaryStream( ) of PreparedStatement object for replacing placeholder of image with actual image object.
+
+6. This method has the following prototype :
+	public void setBinaryStream(int pos,InputStream obj,int size) throws SQLException
+
+7. Following is the description of it’s arguments:
+	a. 		position of placeholder
+	b. 		An object of FileInputStream class holding 			              the image to be inserted.
+	c. 		Size of the image in bytes
+
+8.	Finally call the method executeUpdate( ) to insert the image in the database.
+
+EXERCISE
+----------
+Create a table called MOVIES in the database having following structure:
+MOVIES(mov_name varchar2(20),img blob)
+
+Write an app that fetches an image and stores it in the table . Make sure the image name also goes to the “mov_name” column
+
+
+
