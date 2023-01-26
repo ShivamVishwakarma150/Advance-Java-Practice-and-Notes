@@ -10,10 +10,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Scanner;
 
-import org.apache.commons.io.IOUtils;
+// import org.apache.commons.io.IOUtils;
 
 
-public class PsBLOBPhotoRetrieve {
+public class PsBLOBPhotoRetrieveOracle {
 private static final String ARTIST_RETRIEVE_QUERY="SELECT AID,NAME,ADDRS,PHOTO FROM ARTIST_INFO WHERE AID=?";
 	public static void main(String[] args) {
 		try(Scanner sc=new Scanner(System.in)){
@@ -46,7 +46,7 @@ private static final String ARTIST_RETRIEVE_QUERY="SELECT AID,NAME,ADDRS,PHOTO F
 						OutputStream os=new FileOutputStream("retrieve_image.jpg");
 						){
 					//Copy BLOB col value to Destination file
-					IOUtils.copy(is,os);
+					// IOUtils.copy(is,os);
 					System.out.println("BLOB value is retrieve and stored in the file");
 				}//try4
 						}//if
