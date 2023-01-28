@@ -8,7 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Scanner;
 
-import oracle.jdbc.OracleTypes;
+// import oracle.jdbc.OracleTypes;
 
 /*CREATE OR REPLACE PROCEDURE P_GET_EMPS_BYNAME_INITIALS 
 (
@@ -35,8 +35,8 @@ public class CsProcedureCursorTest {
 				     CallableStatement cs=con.prepareCall(PROCEDURE_CALL_QUERY);
 				   ){
 			    //register OUT parameter with JDBC type
-			     if(cs!=null)
-			    	 cs.registerOutParameter(2, OracleTypes.CURSOR);
+			    //  if(cs!=null)
+			    // 	 cs.registerOutParameter(2, OracleTypes.CURSOR);
 			     //set value to IN param
 			     if(cs!=null)
 			    	 cs.setString(1,initChars);
