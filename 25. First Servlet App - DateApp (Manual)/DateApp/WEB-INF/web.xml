@@ -1,0 +1,15 @@
+<web-app>
+
+    <!-- Servlet Configuration -->
+    <servlet>
+        <servlet-name>date</servlet-name>
+        <servlet-class>com.shivam.servlet.DateServlet</servlet-class>
+    </servlet>
+
+    <!-- Servlet mapping/linking with url -->
+    <servlet-mapping>
+        <servlet-name>date</servlet-name>
+        <url-pattern>/first</url-pattern>
+    </servlet-mapping>
+
+</web-app>
