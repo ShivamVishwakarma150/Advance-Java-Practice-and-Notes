@@ -1,0 +1,26 @@
+1) Database : A software which is used to store the data for long time.
+
+        Ex: Oracle, MySQL, SQLServer, PostGresql MongoDB etc.
+
+
+2) Persistence Layer : It contains logic to communicate with Database.
+
+    java program <----------------> Database
+
+3) Business Layer : It contains actual Business logic of our project.for project to project Business logic will be different.
+
+    a) Sending email for user 
+    b) sending otp
+    c) ticket booking
+
+Note: Business logic will change from screen to screen and project to project.
+
+4) Web Layer: It contains logic to deal with Request & Response.
+
+Note: We can use Servlets to develop web layer in Java projects.
+
+JDBC : To develop Persistence layer
+Servlets : To develop web layer 
+JSP : To develop presentation layer 
+MVC Architecture.
+Servers: Tomcat, JBOSS Server
