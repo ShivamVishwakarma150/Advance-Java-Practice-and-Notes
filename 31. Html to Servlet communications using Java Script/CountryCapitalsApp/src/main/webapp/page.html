@@ -1,0 +1,20 @@
+
+
+<h1 style="color:red;text-align:center">Html to servlet communication using java script</h1>
+
+<form name="frm" action="capitalurl" method="GET">
+	select Country :: <select name="country" onchange="send()">
+						<option value="-1" selected>--Select --value</option>
+						<option value="0" >India</option>
+						<option value="1" >Pakistan</option>
+						<option value="2">USA</option>
+						<option value="3" >China</option>
+					  </select>
+
+</form>
+
+<script>
+	function send(){
+		frm.submit();// submits the request to action url
+	}
+</script>

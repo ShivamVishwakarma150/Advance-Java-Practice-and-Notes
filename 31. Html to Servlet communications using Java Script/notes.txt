@@ -1,0 +1,1 @@
+Here we are doing Html to Servlet communication using JavaScript
